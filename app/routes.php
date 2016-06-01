@@ -16,14 +16,16 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/sayHello', function() {
-	return 'Hello Joshua';
-});
-
 Route::get('/resume', function() {
 	return 'This is my resume';
 });
 
 Route::get('/portfolio', function() {
 	return 'This is my portfolio';
+});
+
+Route::get('/rolldice/{guess}', function($guess) {
+	$randomNumber = rand(1, 6);
+	$data = ['guess' => $guess, 'randomNumber' => $randomNumber];
+	return View::make('roll-dice')->with($data);
 });
