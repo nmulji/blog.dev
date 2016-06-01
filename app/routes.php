@@ -16,12 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/resume', function() {
-	return View::make('resume');
-});
+Route::get('/resume', 'HomeController@resume');
 
-Route::get('/portfolio', function() {
-	return View::make('portfolio');
-});
+Route::get('/portfolio', 'HomeController@portfolio');
 
 Route::get('/rolldice/{guess}', 'HomeController@rollDice');

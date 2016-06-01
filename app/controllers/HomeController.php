@@ -28,4 +28,14 @@ class HomeController extends BaseController {
 	return View::make('roll-dice')->with($data);
 	}
 
+	public function resume()
+	{
+		return View::make('resume');
+	}
+
+	public function portfolio()
+	{
+		return View::make('portfolio');
+	}
+
 }

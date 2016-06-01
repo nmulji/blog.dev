@@ -8,6 +8,13 @@
 
 	<div id="mycontainer" class="text-center">
 
+		<a href="{{{ action('HomeController@rollDice', 1) }}}">Roll The Dice! Guess 1</a>
+		<a href="{{{ action('HomeController@rollDice', 2) }}}">Roll The Dice! Guess 2</a>
+		<a href="{{{ action('HomeController@rollDice', 3) }}}">Roll The Dice! Guess 3</a>
+		<a href="{{{ action('HomeController@rollDice', 4) }}}">Roll The Dice! Guess 4</a>
+		<a href="{{{ action('HomeController@rollDice', 5) }}}">Roll The Dice! Guess 5</a>
+		<a href="{{{ action('HomeController@rollDice', 6) }}}">Roll The Dice! Guess 6</a>
+
 		<div class="row">
 			<div class="categories">
 			  <h1>Education</h1>
