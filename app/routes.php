@@ -24,9 +24,4 @@ Route::get('/portfolio', function() {
 	return View::make('portfolio');
 });
 
-Route::get('/rolldice/{guess}', function($guess) {
-	$randomNumber = rand(1, 6);
-	$message = ($guess == $randomNumber) ? 'You won!' : 'You lost!';
-	$data = ['guess' => $guess, 'randomNumber' => $randomNumber, 'message' => $message];
-	return View::make('roll-dice')->with($data);
-});
+Route::get('/rolldice/{guess}', 'HomeController@rollDice');

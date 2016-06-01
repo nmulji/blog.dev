@@ -20,4 +20,12 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function rollDice($guess)
+	{
+	$randomNumber = rand(1, 6);
+	$message = ($guess == $randomNumber) ? 'You won!' : 'You lost!';
+	$data = ['guess' => $guess, 'randomNumber' => $randomNumber, 'message' => $message];
+	return View::make('roll-dice')->with($data);
+	}
+
 }
