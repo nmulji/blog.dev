@@ -10,6 +10,7 @@ class PostsController extends \BaseController {
 	public function index()
 	{
 		$posts = Post::all();
+
 		return View::make('posts/index')->with('posts', $posts);
 	}
 
@@ -36,6 +37,7 @@ class PostsController extends \BaseController {
 		$post->user_id = "1";
 		$post->title = Input::get('title');
 		$post->description = Input::get('description');
+
 		if($post->save()) {
 			return Redirect::action('PostsController@show', $post->id);
 		} else {
@@ -53,8 +55,7 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 		$post = Post::find($id);
-		return $post;
-		//return View::make('posts/show/{post}');
+		return View::make('posts/show')->with('post', $post);
 	}
 
 
