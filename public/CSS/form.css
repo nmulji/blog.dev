@@ -1,0 +1,21 @@
+#form_container {
+	background-color: #404040;
+}
+
+#input_title, #input_description {
+	width: 50%;
+	margin-top: 1.5em;
+	border: 2px solid black;
+}
+
+#input_description {
+	height: 20%;
+}
+
+#submit_post {
+	margin-top: 1.5em;
+	width: 25%;
+	background-color: #888888;
+	border: 2px solid black;
+	font-weight: bold;
+}
