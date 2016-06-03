@@ -8,13 +8,30 @@
 
 <div class="container-fluid" id="form_container">
 
-	{{ $errors->first('title', '<span class="help-block">:message</span>') }}
-	{{ $errors->first('description', '<span class="help-block">:message</span>') }}
+	@if ($errors->has('title'))
+
+		<div class="alert alert-danger">
+
+			{{ $errors->first('title', '<span class="help-block">:message</span>') }}
+
+		</div>
+
+	@endif
 
 	<form class="form-horizontal" action="{{{ action('PostsController@store') }}}" method="POST">
 		<div class="col-sm-10">
 			<input id="input_title" type="text" class="form-control" name="title" placeholder="Title Your Post" value="{{{ Input::old('title') }}}">
 		</div>
+
+	@if ($errors->has('description'))
+
+		<div class="alert alert-danger">
+
+			{{ $errors->first('description', '<span class="help-block">:message</span>') }}
+
+		</div>
+
+	@endif
 
 		<div class="col-sm-10">
 			<textarea id="input_description" class="form-control" name="description" placeholder="Type your post here" required>{{{ Input::old('description') }}}</textarea>
