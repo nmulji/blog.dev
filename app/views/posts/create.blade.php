@@ -8,6 +8,9 @@
 
 <div class="container-fluid" id="form_container">
 
+	{{ $errors->first('title', '<span class="help-block">:message</span>') }}
+	{{ $errors->first('description', '<span class="help-block">:message</span>') }}
+
 	<form class="form-horizontal" action="{{{ action('PostsController@store') }}}" method="POST">
 		<div class="col-sm-10">
 			<input id="input_title" type="text" class="form-control" name="title" placeholder="Title Your Post" value="{{{ Input::old('title') }}}">

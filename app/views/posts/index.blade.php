@@ -10,7 +10,7 @@
 
 	@foreach($posts as $post)
 		<div class="container">
-			<h3>{{{ $post->title }}}</h3>
+			<h3><a href="{{{action('PostsController@show', $post->id }}}">{{{ $post->title }}}</h3>
 			<p>{{{ $post->description }}}</p>
 			<p> Written on: {{{ $post->create_at }}}</p>
 		</div>
