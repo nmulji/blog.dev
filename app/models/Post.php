@@ -9,4 +9,9 @@ class Post extends BaseModel {
     	'description'       => 'required|max:10'
 	);
 
+	public function user()
+	{
+	    return $this->belongsTo('User');
+	}
+
 }
