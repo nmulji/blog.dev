@@ -23,3 +23,7 @@ Route::get('/portfolio', 'HomeController@portfolio');
 Route::get('/rolldice/{guess}', 'HomeController@rollDice');
 
 Route::resource('posts', 'PostsController');
+
+Route::get('/login', 'HomeController@login');
+
+Route::post('/login', 'HomeController@loginForm');

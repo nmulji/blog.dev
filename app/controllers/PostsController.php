@@ -41,7 +41,7 @@ class PostsController extends \BaseController {
 		$post->description = Input::get('description');
 		$validator = Validator::make(Input::all(), Post::$rules);
 
-		Log::info()
+		Log::info();
 
 		if($validator->fails()) {
 			Session::flash('errorMessage', 'Your post has not been saved');
@@ -78,7 +78,7 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		$post = Post::find($id);
-		return View::make('posts/edit')->with('post' => $post);
+		return View::make('posts/edit')->with('post', $post);
 	}
 
 
