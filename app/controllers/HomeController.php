@@ -38,4 +38,34 @@ class HomeController extends BaseController {
 		return View::make('portfolio');
 	}
 
+	//GET
+	public function loginForm()
+	{
+		//Grab all input
+
+		//Validate input fields
+
+		//Attempt login
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+		    return Redirect::intended('/');
+		} else {
+		    // login failed, go back to the login screen
+		}
+	}
+
+	//POST
+	public function checkUser()
+	{
+		if (Auth::check()) {
+		    // user is logged in
+		} else {
+		    // user not NOT logged in
+		}
+	}
+
+	public function logOut()
+	{
+		Auth::logout()
+	}
+
 }

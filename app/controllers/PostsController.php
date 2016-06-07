@@ -41,11 +41,16 @@ class PostsController extends \BaseController {
 		$post->description = Input::get('description');
 		$validator = Validator::make(Input::all(), Post::$rules);
 
+		Log::info()
 
 		if($validator->fails()) {
+			Session::flash('errorMessage', 'Your post has not been saved');
+			$value = Session::get('successMessage');
 			return Redirect::back()->withInput()->withErrors($validator);
 		} else {
 			$post->save();
+			Session::flash('successMessage', 'Your post has been saved');
+			$value = Session::get('successMessage');
 			return Redirect::action('PostsController@show', $post->id);
 		}
 	}
@@ -72,7 +77,8 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return View::make('posts/{post}/edit');
+		$post = Post::find($id);
+		return View::make('posts/edit')->with('post' => $post);
 	}
 
 
