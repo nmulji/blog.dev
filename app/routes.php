@@ -24,6 +24,6 @@ Route::get('/rolldice/{guess}', 'HomeController@rollDice');
 
 Route::resource('posts', 'PostsController');
 
-Route::get('/login', 'HomeController@login');
-
 Route::post('/login', 'HomeController@loginForm');
+
+Route::get('/logout', 'HomeController@logOut');

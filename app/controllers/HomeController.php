@@ -39,12 +39,6 @@ class HomeController extends BaseController {
 	}
 
 
-	public function login()
-	{
-		return View::make('login');
-	}
-
-
 	//GET
 	public function loginForm()
 	{
@@ -59,7 +53,7 @@ class HomeController extends BaseController {
 
 		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 		//if (Auth::attempt(array(Input::get('email') => $email, Input::get('password') => $password))) 
-		    return Redirect::intended('/');
+			return Redirect::action('PostsController@index');
 		} else {
 			Session::flash('errorMessage', 'Failed to Login');
 			return Redirect::back()->withInput();
@@ -81,6 +75,7 @@ class HomeController extends BaseController {
 	public function logOut()
 	{
 		Auth::logout();
+		return Redirect::action('PostsController@index');
 	}
 
 }
