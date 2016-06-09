@@ -9,7 +9,7 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::paginate(2);
+		$posts = Post::paginate(3);
 
 		return View::make('posts/index')->with('posts', $posts);
 	}
@@ -40,8 +40,6 @@ class PostsController extends \BaseController {
 		$post->title = Input::get('title');
 		$post->description = Input::get('description');
 		$validator = Validator::make(Input::all(), Post::$rules);
-
-		Log::info();
 
 		if($validator->fails()) {
 			Session::flash('errorMessage', 'Your post has not been saved');

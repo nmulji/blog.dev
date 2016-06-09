@@ -20,22 +20,45 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function rollDice($guess)
+	public function blogHome()
 	{
-	$randomNumber = rand(1, 6);
-	$message = ($guess == $randomNumber) ? 'You won!' : 'You lost!';
-	$data = ['guess' => $guess, 'randomNumber' => $randomNumber, 'message' => $message];
-	return View::make('roll-dice')->with($data);
+		return View::make('home-blog');
 	}
 
-	public function resume()
+	public function blogAbout()
 	{
-		return View::make('resume');
+		return View::make('about-blog');
 	}
 
-	public function portfolio()
+	public function blogContact()
 	{
-		return View::make('portfolio');
+		return View::make('contact-blog');
+
+			// Check for empty fields
+			if(empty($_POST['name'])  		||
+			   empty($_POST['email']) 		||
+			   empty($_POST['phone']) 		||
+			   empty($_POST['message'])	||
+			   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+			   {
+				echo "No arguments Provided!";
+				return false;
+			   }
+				
+			$name = $_POST['name'];
+			$email_address = $_POST['email'];
+			$phone = $_POST['phone'];
+			$message = $_POST['message'];
+				
+			// Create the email and send the message
+			$to = 'yourname@yourdomain.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+			$email_subject = "Website Contact Form:  $name";
+			$email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+			$headers = "From: noreply@yourdomain.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+			$headers .= "Reply-To: $email_address";	
+			mail($to,$email_subject,$email_body,$headers);
+			return true;			
+		
 	}
 
 
@@ -53,7 +76,7 @@ class HomeController extends BaseController {
 
 		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 		//if (Auth::attempt(array(Input::get('email') => $email, Input::get('password') => $password))) 
-			return Redirect::action('PostsController@index');
+			return Redirect::action('HomeController@blogHome');
 		} else {
 			Session::flash('errorMessage', 'Failed to Login');
 			return Redirect::back()->withInput();
@@ -75,7 +98,7 @@ class HomeController extends BaseController {
 	public function logOut()
 	{
 		Auth::logout();
-		return Redirect::action('PostsController@index');
+		return Redirect::action('HomeController@blogHome');
 	}
 
 }

@@ -1,8 +1,5 @@
-@extends('layouts.master')
+@extends('layouts.blog')
 
-    <!--Form Style Sheet-->
-
-    <link rel="stylesheet" href="/css/form.css">
 
 @section('content')
 

@@ -16,7 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/resume', 'HomeController@resume');
+// Route::get('/resume', 'HomeController@resume');
 
 Route::get('/portfolio', 'HomeController@portfolio');
 
@@ -27,3 +27,9 @@ Route::resource('posts', 'PostsController');
 Route::post('/login', 'HomeController@loginForm');
 
 Route::get('/logout', 'HomeController@logOut');
+
+Route::get('/blog', 'HomeController@blogHome');
+
+Route::get('/about', 'HomeController@blogAbout');
+
+Route::get('/contact', 'HomeController@blogContact');
