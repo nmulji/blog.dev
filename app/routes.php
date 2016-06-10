@@ -11,16 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-
-// Route::get('/resume', 'HomeController@resume');
-
-Route::get('/portfolio', 'HomeController@portfolio');
-
-Route::get('/rolldice/{guess}', 'HomeController@rollDice');
+Route::get('/', 'HomeController@blogHome');
 
 Route::resource('posts', 'PostsController');
 
