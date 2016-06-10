@@ -22,7 +22,9 @@ class HomeController extends BaseController {
 
 	public function blogHome()
 	{
-		return View::make('home-blog');
+		$posts = Post::paginate(4);
+
+		return View::make('home-blog')->with('posts', $posts);
 	}
 
 	public function blogAbout()

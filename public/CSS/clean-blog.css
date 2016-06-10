@@ -393,3 +393,9 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #0085a1;
 }
+#input_description {
+  margin-top: 2em;
+}
+#submit_post {
+  margin-top: 2em;
+}
